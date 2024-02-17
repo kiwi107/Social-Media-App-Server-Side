@@ -39,7 +39,8 @@ app.use(helmet());
 app.use(cors({
   origin: process.env.CLIENT_URL,
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
-  credentials: true // enable cookies
+  credentials: true,
+  exposedHeaders: ['Set-Cookie']
 }));
 
 
@@ -51,7 +52,8 @@ const io = new Server(server, {
   cors: {
     origin: process.env.CLIENT_URL,
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
-    credentials: true // enable cookies
+    credentials: true,
+    exposedHeaders: ['Set-Cookie']
   },
 });
 

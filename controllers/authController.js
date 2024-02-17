@@ -78,6 +78,9 @@ const register = async (req, res) => {
             httpOnly: true, //to avoid XSS attacks
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
             path: '/',
+            sameSite: 'none',
+            secure:true
+            
 
         });
 
@@ -136,13 +139,15 @@ const login = async (req, res) => {
 
 
 
-            res.cookie('JWT', token, {
-                httpOnly: true, //to avoid XSS attacks
-                //one year
-                expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
-                path: '/',
+           res.cookie('JWT', token, {
+            httpOnly: true, //to avoid XSS attacks
+            expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
+            path: '/',
+            sameSite: 'none',
+            secure:true
+            
 
-            });
+        });
 
             res.status(200).json({ auth: true, token: token, user: existingUser.rows[0] });
 

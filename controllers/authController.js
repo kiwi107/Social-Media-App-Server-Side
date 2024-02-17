@@ -79,7 +79,8 @@ const register = async (req, res) => {
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
             path: '/',
             sameSite: 'none',
-            secure: true 
+            secure: true,
+            domain: '.kiwigram-react.onrender.com'
             
 
         });
@@ -144,7 +145,8 @@ const login = async (req, res) => {
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
             path: '/',
             sameSite: 'none',
-            secure:'true'
+            secure:'true',
+            domain: '.kiwigram-react.onrender.com'
             
 
         });

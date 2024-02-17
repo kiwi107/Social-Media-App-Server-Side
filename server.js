@@ -38,6 +38,7 @@ app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors({
   origin: process.env.CLIENT_URL,
+  domain: process.env.CLIENT_URL,
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
   credentials: true,
   exposedHeaders: ['Set-Cookie']
@@ -51,6 +52,7 @@ const { Server } = require('socket.io');
 const io = new Server(server, {
   cors: {
     origin: process.env.CLIENT_URL,
+    domain: process.env.CLIENT_URL,
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
     credentials: true,
     exposedHeaders: ['Set-Cookie']

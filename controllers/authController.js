@@ -78,8 +78,7 @@ const register = async (req, res) => {
             httpOnly: true, //to avoid XSS attacks
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
             path: '/',
-            sameSite: 'none',
-            secure:true
+            sameSite: 'none'
             
 
         });
@@ -143,8 +142,7 @@ const login = async (req, res) => {
             httpOnly: true, //to avoid XSS attacks
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
             path: '/',
-            sameSite: 'none',
-            secure:true
+            sameSite: 'none'
             
 
         });

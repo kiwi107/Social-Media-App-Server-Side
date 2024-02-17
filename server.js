@@ -70,8 +70,8 @@ app.use(bodyparser.urlencoded({ extended: true }));
 
 // Routes
 app.use("/", authRoutes);
-// app.use("/posts", authenticateToken, postsRoutes);
-app.use("/posts", postsRoutes);
+app.use("/posts", authenticateToken, postsRoutes);
+// app.use("/posts", postsRoutes);
 
 app.use("/profile", authenticateToken, profileRoutes);
 app.use("/chat", authenticateToken, chatRoutes);

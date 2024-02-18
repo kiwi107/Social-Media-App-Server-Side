@@ -20,6 +20,7 @@ function authenticateSocketConnection(socket, next) {
     if (!token) {
         return next(new Error('Unauthorized'));
     }
+    console.log(token)
     //the user object is the payload from the jwt
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) {

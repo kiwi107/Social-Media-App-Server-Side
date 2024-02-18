@@ -23,7 +23,7 @@ const register = async (req, res) => {
         //processing profile image
         let profileimageURL = '';
         if (!req.file) {
-            profileimageURL = 'https://firebasestorage.googleapis.com/v0/b/kiwigram-307be.appspot.com/o/default.jpeg?alt=media&token=591aa8c1-7b4e-4a88-865c-ace07ff18ca2';
+            profileimageURL = 'https://firebasestorage.googleapis.com/v0/b/kiwigram-307be.appspot.com/o/profile_images%2Fdefault.jpeg?alt=media&token=b0f7c0b5-0071-4c1c-90b1-6c38320f18a3';
         } else {
             profileimageURL = req.file.originalname;
             const storageRef = ref(storage, `profile_images/${profileimageURL}`);

@@ -26,7 +26,7 @@ const register = async (req, res) => {
             profileimageURL = 'https://firebasestorage.googleapis.com/v0/b/kiwigram-307be.appspot.com/o/default.jpeg?alt=media&token=591aa8c1-7b4e-4a88-865c-ace07ff18ca2';
         } else {
             profileimageURL = req.file.originalname;
-            const storageRef = ref(storage, `profile_images/${profileimage}`);
+            const storageRef = ref(storage, `profile_images/${profileimageURL}`);
             await uploadBytesResumable(storageRef, req.file.buffer);
             profileimageURL = await getDownloadURL(storageRef);
         }

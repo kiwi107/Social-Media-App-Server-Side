@@ -4,23 +4,14 @@ const { onConnect } = require("../controllers/socketController");
 require("dotenv").config();
 
 function authenticateSocketConnection(socket, next) {
-    const cookies = socket.handshake.headers.cookie;
-    let token = null;
+    const token = socket.handshake.headers[jwt]
 
-    if (!cookies) {
-        return next(new Error('Unauthorized'));
-    }
-
-    const cookiesArray = cookies.split(';');
-    const tokenCookie = cookiesArray.find(cookie => cookie.startsWith('JWT=') || cookie.startsWith(' JWT='));
-
-    if (tokenCookie) {
-        token = tokenCookie.split('=')[1];
-    }
 
     if (!token) {
         return next(new Error('Unauthorized'));
     }
+
+   
     //the user object is the payload from the jwt
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) {

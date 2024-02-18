@@ -38,10 +38,8 @@ app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors({
   origin: process.env.CLIENT_URL,
-  domain: process.env.CLIENT_URL,
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
-  credentials: true,
-  exposedHeaders: ['Set-Cookie']
+  credentials: true // enable cookies
 }));
 
 
@@ -52,10 +50,8 @@ const { Server } = require('socket.io');
 const io = new Server(server, {
   cors: {
     origin: process.env.CLIENT_URL,
-    domain: process.env.CLIENT_URL,
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
-    credentials: true,
-    exposedHeaders: ['Set-Cookie']
+    credentials: true // enable cookies
   },
 });
 
@@ -67,7 +63,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 
-app.use(sessionMiddleware);
+// app.use(sessionMiddleware);
 
 
 app.use(bodyparser.urlencoded({ extended: true }));

@@ -67,23 +67,19 @@ const register = async (req, res) => {
         });
 
 
-        req.session.user = {
-            username: username,
-            userID: newUserID.rows[0].user_id
-        }
+        // req.session.user = {
+        //     username: username,
+        //     userID: newUserID.rows[0].user_id
+        // }
 
 
 
-        res.cookie('JWT', token, {
-            httpOnly: true, //to avoid XSS attacks
-            expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
-            path: '/',
-            sameSite: 'none',
-            secure: true,
-          
-            
+        // res.cookie('JWT', token, {
+        //     httpOnly: true, //to avoid XSS attacks
+        //     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
+        //     path: '/',
 
-        });
+        // });
 
 
 
@@ -133,22 +129,20 @@ const login = async (req, res) => {
                 expiresIn: '1d',
             });
 
-            req.session.user = {
-                username: existingUser.rows[0].username,
-                userID: existingUser.rows[0].user_id
-            }
+            // req.session.user = {
+            //     username: existingUser.rows[0].username,
+            //     userID: existingUser.rows[0].user_id
+            // }
 
 
 
-           res.cookie('JWT', token, {
-            httpOnly: true, //to avoid XSS attacks
-            expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
-            path: '/',
-            sameSite: 'none',
-            secure:'true'
-            
+            // res.cookie('JWT', token, {
+            //     httpOnly: true, //to avoid XSS attacks
+            //     //one year
+            //     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
+            //     path: '/',
 
-        });
+            // });
 
             res.status(200).json({ auth: true, token: token, user: existingUser.rows[0] });
 
